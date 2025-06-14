@@ -60,6 +60,4 @@
   </a>
 </p>
 
----
 
-⭐️ От <a href="https://github.com/avsize8">AVSIZE</a> с ❤️
