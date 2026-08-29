@@ -58,12 +58,11 @@ class Avsize:
 
 <div align="center">
 
-<img src="./assets/metrics.svg" alt="Обзор профиля" width="49%" />
-<img src="./assets/metrics-languages.svg" alt="Языки" width="49%" />
+<img src="./assets/metrics.svg" alt="Календарь контрибуций" width="72%" />
 
-<img src="https://streak-stats.demolab.com?user=avsize8&hide_border=true&border_radius=12&background=FFFFFF&ring=8E2DE2&fire=8E2DE2&currStreakLabel=2CA5E0&sideLabels=2CA5E0&currStreakNum=1F2328&sideNums=1F2328&dates=8B949E&stroke=E5E7EB" alt="Серия коммитов" width="70%" />
+<img src="https://streak-stats.demolab.com?user=avsize8&hide_border=true&border_radius=12&background=FFFFFF&ring=8E2DE2&fire=8E2DE2&currStreakLabel=2CA5E0&sideLabels=2CA5E0&currStreakNum=1F2328&sideNums=1F2328&dates=8B949E&stroke=E5E7EB" alt="Серия коммитов" width="72%" />
 
-<sub>Карточки собираются самим репозиторием через GitHub Actions — без внешних сервисов, которые могут отвалиться.</sub>
+<sub>Календарь собирается самим репозиторием через GitHub Actions — без внешних сервисов, которые могут отвалиться.</sub>
 
 </div>
 

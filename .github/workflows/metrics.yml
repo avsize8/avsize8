@@ -1,5 +1,17 @@
 name: 📊 Profile metrics
 
+# Renders the profile stat card into assets/ so the README does not depend on
+# any third-party widget host staying online.
+#
+# Runs on the default GITHUB_TOKEN, which is scoped to THIS repository only.
+# That is enough for the contribution calendar (public data), but it cannot see
+# the owner's other repos — so repository counts and languages are deliberately
+# not rendered here; they would report "1 Repository" and "0 Languages".
+#
+# To unlock them: create a PAT (scope `read:user`, plus `repo` for private
+# stats) and save it as the repository secret METRICS_TOKEN. It is picked up
+# automatically below, and you can then re-enable the "Languages card" step.
+
 on:
   schedule:
     - cron: "30 0 * * *"
@@ -13,12 +25,12 @@ concurrency:
 
 jobs:
   metrics:
-    name: Render stat cards
+    name: Render stat card
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Overview card
+      - name: Contribution card
         uses: lowlighter/metrics@v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
@@ -26,22 +38,21 @@ jobs:
           committer_branch: main
           filename: assets/metrics.svg
           template: classic
-          base: header, repositories, metadata
+          base: header, metadata
           config_timezone: Asia/Yekaterinburg
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-      - name: Languages card
-        uses: lowlighter/metrics@v3.34
-        with:
-          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
-          user: ${{ github.repository_owner }}
-          committer_branch: main
-          filename: assets/metrics-languages.svg
-          template: classic
-          base: ""
-          config_timezone: Asia/Yekaterinburg
-          plugin_languages: yes
-          plugin_languages_limit: 8
-          plugin_languages_details: percentage
-          plugin_languages_sections: most-used
+      # Requires METRICS_TOKEN (see note above) — renders empty on GITHUB_TOKEN.
+      # - name: Languages card
+      #   uses: lowlighter/metrics@v3.34
+      #   with:
+      #     token: ${{ secrets.METRICS_TOKEN }}
+      #     user: ${{ github.repository_owner }}
+      #     committer_branch: main
+      #     filename: assets/metrics-languages.svg
+      #     template: classic
+      #     base: ""
+      #     plugin_languages: yes
+      #     plugin_languages_limit: 8
+      #     plugin_languages_details: percentage
