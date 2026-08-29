@@ -40,6 +40,8 @@ jobs:
           template: classic
           base: header, metadata
           config_timezone: Asia/Yekaterinburg
+          extras_css: |
+            svg { filter: grayscale(1) contrast(1.05); }
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
